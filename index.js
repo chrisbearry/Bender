@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS"]});
 const covid = require('novelcovid')
 
+
 const prefix = '+'
 
 
@@ -9,7 +10,7 @@ const prefix = '+'
 client.on('ready', () => {
     console.log('Bender is now online!');
     client.user.setStatus('online');
-    client.user.setActivity('2021 is here, +help', {
+    client.user.setActivity(`kinda falling for anna`, {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     })
@@ -92,7 +93,9 @@ client.on('message', async message => {
     } else if (message.content.toLowerCase == 'who') {
         message.channel.send('Cares')
     } else if (command == 'ping') {
-        message.reply(`Pong I took ${Math.round(client.ws.ping)} ms to do that!`)
+        message.reply(`:satellite: getting Bender's ping :)`).then(message => {
+            message.edit(`:satellite_orbital: the bots ping is ${Math.round(client.ws.ping)}ms`)
+        })
     } else if (command == 'test') {
         message.reply('I am online and working fine :)')
     } else if (command == 'stickbug') {
@@ -397,6 +400,16 @@ client.on('message', async message => {
                 {
                     name: 'weather-f',
                     value: 'shows the weather for your city in Fahrenheit **+weather {city/state}**',
+                    inline: true
+                },
+                {
+                    name: 'swagmeter',
+                    value: 'gives you a swag ranking',
+                    inline: true
+                },
+                {
+                    name: 'uptime',
+                    value: 'Gives you the uptime of Bender',
                     inline: true
                 },
             )
@@ -1152,6 +1165,45 @@ client.on('message', async message => {
         } else 
         await mentionedMember.setNickname(nickname)
         message.reply(`Their nickname has been set to **${nickname}**`)
+    } else if (command == 'swagmeter') {
+        let number = Math.floor(Math.random() * 11);
+        if (number == 0) {
+            return message.channel.send('Your Swag Rank: 0 :joy:\n\n:red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:')
+        }
+        if (number == 1) {
+            return message.channel.send('Your Swag Rank: 1\n\n:green_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:')
+        }
+        if (number == 2) {
+            return message.channel.send('Your Swag Rank: 2\n\n:green_square::green_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:')
+        }
+        if (number == 3) {
+            return message.channel.send('Your Swag Rank: 3\n\n:green_square::green_square::green_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:')
+        }
+        if (number == 4) {
+            return message.channel.send('Your Swag Rank: 4\n\n:green_square::green_square::green_square::green_square::red_square::red_square::red_square::red_square::red_square::red_square:')
+        }
+        if (number == 5) {
+            return message.channel.send('Your Swag Rank: 5\n\n:green_square::green_square::green_square::green_square::green_square::red_square::red_square::red_square::red_square::red_square:')
+        }
+        if (number == 6) {
+            return message.channel.send('Your Swag Rank: 6\n\n:green_square::green_square::green_square::green_square::green_square::green_square::red_square::red_square::red_square::red_square:')
+        }
+        if (number == 7) {
+            return message.channel.send('Your Swag Rank: 7\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::red_square::red_square::red_square:')
+        }
+        if (number == 8) {
+            return message.channel.send('Your Swag Rank: 8\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::red_square::red_square:')
+        }
+        if (number == 9) {
+            return message.channel.send('Your Swag Rank: 9\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::red_square:')
+        }
+        if (number == 10) {
+            return message.channel.send('Your Swag Rank: 10\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square:')
+        }
+    } else if(command == 'uptime'){
+        message.channel.send(`I have been online for ${process.uptime().toFixed(2)}s`)
+    } else if(command == 'anna'){
+        message.channel.send(`their personality is perfect and her voiceee her voice is literally so cute <33`)
     }
 });
 
