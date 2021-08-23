@@ -10,7 +10,7 @@ const prefix = '+'
 client.on('ready', () => {
     console.log('Bender is now online!');
     client.user.setStatus('online');
-    client.user.setActivity(`kinda falling for anna`, {
+    client.user.setActivity(`falling for anna`, {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     })
