@@ -1,23 +1,16 @@
 const Discord = require('discord.js');
-const client = new Discord.Client({ intents: ["GUILDS"]});
+const client = new Discord.Client({ intents: ["GUILDS"] });
 const covid = require('novelcovid')
-
-
 const prefix = '+'
-
-
 
 client.on('ready', () => {
     console.log('Bender is now online!');
-    client.user.setStatus('online');
-    client.user.setActivity(`falling for anna`, {
+    client.user.setStatus('idle');
+    client.user.setActivity(`kinda falling for anna`, {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     })
 });
-
-
-
 
 client.on('message', async message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -34,7 +27,7 @@ client.on('message', async message => {
             return message.reply('Hey... you cannot use this command.')
         }
         {
-            const userBan = message.mentions.members.first() || message.guild.members.cache.get(args[0]) 
+            const userBan = message.mentions.members.first() || message.guild.members.cache.get(args[0])
             let UBtarget = message.guild.members.cache.get(userBan.id)
             const reason = args.slice(1).join(" ");
             if (!reason) return message.reply(`Please type a reason.`);
@@ -63,7 +56,7 @@ client.on('message', async message => {
         if (!message.member.hasPermission("KICK_MEMBERS")) {
             return message.reply('Hey... you cannot use this command.')
         } {
-            const userKick = message.mentions.members.first() || message.guild.members.cache.get(args[0]) 
+            const userKick = message.mentions.members.first() || message.guild.members.cache.get(args[0])
             let kickTarget = message.guild.members.cache.get(userKick.id)
             const reason = args.slice(1).join(" ");
             if (!reason) return message.reply(`Please type a reason.`);
@@ -893,7 +886,7 @@ client.on('message', async message => {
         got(`https://www.reddit.com/r/memes/random/.json`).then(response => {
             let content = JSON.parse(response.body);
             let permalink = content[0].data.children[0].data.permalink;
-            let memeUrl = `https://reddir.com${permalink}`;
+            let memeUrl = `https://reddit.com${permalink}`;
             let memeImage = content[0].data.children[0].data.url;
             let memeTitle = content[0].data.children[0].data.title;
             let memeUpvotes = content[0].data.children[0].data.ups;
@@ -914,7 +907,7 @@ client.on('message', async message => {
         if (!message.member.hasPermission("MANAGE_MESSAGES")) {
             return message.reply('Hey... you cannot use this command.')
         }
-        const userWarn = message.mentions.members.first() || message.guild.members.cache.get(args[0]) 
+        const userWarn = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         let warnTarget = message.guild.members.cache.get(userWarn.id)
         if (!userWarn) return message.channel.send("**Couldn't find that user**.")
         const reason = args.slice(1).join(" ");
@@ -1146,24 +1139,24 @@ client.on('message', async message => {
         })
     } else if (command == 'weather') {
         message.reply('You have to type **+weather-c** or **+weather-f** weather-c is celsius and weather-f is fahrenheit')
-    } else if(command == 'nick'){
-        if (!message.member.hasPermission("MANAGE_NICKNAMES")){
+    } else if (command == 'nick') {
+        if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
             return message.reply('You do not have permission to use this command!')
-        } 
+        }
         const mentionedMember = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         const nickname = args.slice(1).join(" ");
-        
 
-        if (!args[0]){
-          return message.reply('You must state a member to change a nickname')
-        } 
-        if (!mentionedMember){
-           return message.reply('that user is not in this server!')
+
+        if (!args[0]) {
+            return message.reply('You must state a member to change a nickname')
         }
-        if(!nickname){
+        if (!mentionedMember) {
+            return message.reply('that user is not in this server!')
+        }
+        if (!nickname) {
             return message.reply('You must state a nickname for the member!')
-        } else 
-        await mentionedMember.setNickname(nickname)
+        } else
+            await mentionedMember.setNickname(nickname)
         message.reply(`Their nickname has been set to **${nickname}**`)
     } else if (command == 'swagmeter') {
         let number = Math.floor(Math.random() * 11);
@@ -1200,15 +1193,11 @@ client.on('message', async message => {
         if (number == 10) {
             return message.channel.send('Your Swag Rank: 10\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square:')
         }
-    } else if(command == 'uptime'){
+    } else if (command == 'uptime') {
         message.channel.send(`I have been online for ${process.uptime().toFixed(2)}s`)
-    } else if(command == 'anna'){
+    } else if (command == 'anna') {
         message.channel.send(`their personality is perfect and her voiceee her voice is literally so cute <33`)
     }
 });
-
-
-
-
 
 client.login('TOKEN');
