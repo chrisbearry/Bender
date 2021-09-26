@@ -4,9 +4,9 @@ const covid = require('novelcovid')
 const prefix = '+'
 
 client.on('ready', () => {
-    console.log('Bender is now online!');
-    client.user.setStatus('idle');
-    client.user.setActivity(`kinda falling for anna`, {
+    console.log('Bender is online!');
+    client.user.setStatus('online');
+    client.user.setActivity('+help', {
         type: "STREAMING",
         url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     })
@@ -27,7 +27,7 @@ client.on('message', async message => {
             return message.reply('Hey... you cannot use this command.')
         }
         {
-            const userBan = message.mentions.members.first() || message.guild.members.cache.get(args[0])
+            const userBan = message.mentions.members.first() || message.guild.members.cache.get(args[0]) 
             let UBtarget = message.guild.members.cache.get(userBan.id)
             const reason = args.slice(1).join(" ");
             if (!reason) return message.reply(`Please type a reason.`);
@@ -56,7 +56,7 @@ client.on('message', async message => {
         if (!message.member.hasPermission("KICK_MEMBERS")) {
             return message.reply('Hey... you cannot use this command.')
         } {
-            const userKick = message.mentions.members.first() || message.guild.members.cache.get(args[0])
+            const userKick = message.mentions.members.first() || message.guild.members.cache.get(args[0]) 
             let kickTarget = message.guild.members.cache.get(userKick.id)
             const reason = args.slice(1).join(" ");
             if (!reason) return message.reply(`Please type a reason.`);
@@ -100,11 +100,16 @@ client.on('message', async message => {
     } else if (command == 'noc') {
         message.channel.send('https://tenor.com/view/no-one-cares-i-dont-care-idc-nobody-cares-gif-8737514')
     } else if (command == 'no') {
-        message.channel.send('https://tenor.com/view/spiderman-magic-no-no-sabrina-tv-gif-14293457')
-    } else if (command == 'no2') {
-        message.channel.send('https://tenor.com/view/tonton-tonton-sticker-no-nope-gif-13636081')
-    } else if (command == 'no3') {
-        message.channel.send('https://tenor.com/view/nope-dont-like-that-no-gif-18487207')
+        let number = Math.floor(Math.random() * 3);
+        if (number == 0) {
+            return message.channel.send('https://tenor.com/view/spiderman-magic-no-no-sabrina-tv-gif-14293457')
+        }
+        if (number == 1) {
+            return message.channel.send('https://tenor.com/view/tonton-tonton-sticker-no-nope-gif-13636081')
+        }
+        if (number == 2) {
+            return message.channel.send('https://tenor.com/view/nope-dont-like-that-no-gif-18487207')
+        }
     } else if (command == 'gtfo') {
         message.channel.send('https://tenor.com/view/get-the-fuck-out-gtfo-gif-8331817')
     } else if (command == 'fucku') {
@@ -112,39 +117,26 @@ client.on('message', async message => {
     } else if (command == 'fuck') {
         message.channel.send('https://tenor.com/view/fuck-fuckoff-fuckity-pissedoff-gif-9736688')
     } else if (command == 'idgaf') {
-        message.channel.send('https://tenor.com/view/hold-on-idgaf-spongebob-searching-gif-9197318')
-    } else if (command == 'idgaf2') {
-        message.channel.send('https://tenor.com/view/idgaf-idc-tupac-frankly-my-dear-gif-15920224')
+        let number = Math.floor(Math.random() * 2);
+        if (number == 0) {
+            return message.channel.send('https://tenor.com/view/hold-on-idgaf-spongebob-searching-gif-9197318')
+        }
+        if (number == 1) {
+            return message.channel.send('https://tenor.com/view/idgaf-idc-tupac-frankly-my-dear-gif-15920224')
+        }
     } else if (command == 'idk') {
         message.channel.send('https://tenor.com/view/i-dont-know-man-bubba-thompson-the-cowboy-way-idk-not-sure-gif-17822878')
-    } else if (command == 'ilysm') {
-        message.channel.send('https://tenor.com/view/ilove-you-so-much-red-glitter-animated-text-sparkle-gif-114197')
-    } else if (command == 'ily2') {
-        message.channel.send('https://tenor.com/view/ifucking-love-you-ilove-fucking-you-ilove-you-so-bad-gif-11211599')
     } else if (command == 'ily') {
-        message.channel.send('https://tenor.com/view/love-i-love-you-always-forever-gif-12687654')
-    } else if (command == 'react-sad') {
-        message.react('😢')
-    } else if (command == 'react-thinking') {
-        message.react('🤔')
-    } else if (command == 'react-happy') {
-        message.react('😄')
-    } else if (command == 'react-mad') {
-        message.react('😡')
-    } else if (command == 'react-heart') {
-        message.react('❤️')
-    } else if (command == 'react-thumbsup') {
-        message.react('👍')
-    } else if (command == 'react-hot') {
-        message.react('🥵')
-    } else if (command == 'react-cold') {
-        message.react('🥶')
-    } else if (command == 'react-ok') {
-        message.react('🆗')
-    } else if (command == 'react-no') {
-        message.react('🚫')
-    } else if (command == 'react-fire') {
-        message.react('🔥')
+        let number = Math.floor(Math.random() * 3);
+        if (number == 0) {
+            return message.channel.send('https://tenor.com/view/love-i-love-you-always-forever-gif-12687654')
+        }
+        if (number == 1) {
+            return message.channel.send('https://tenor.com/view/ifucking-love-you-ilove-fucking-you-ilove-you-so-bad-gif-11211599')
+        }
+        if (number == 2) {
+            return message.channel.send('https://tenor.com/view/sparkling-i-love-you-heart-all-is-love-gif-17824535')
+        }
     } else if (command == 'clear') {
         if (message.deletable) {
             message.delete();
@@ -259,11 +251,10 @@ client.on('message', async message => {
         message.author.send(embed)
     } else if (command == 'help') {
         message.react('👍')
-        message.reply('check your dms')
         const embed = new Discord.MessageEmbed()
             .setThumbnail(client.user.displayAvatarURL())
             .setTitle('commands')
-            .setColor('#000000')
+            .setColor('RANDOM')
             .addFields(
                 {
                     name: 'prefix',
@@ -271,146 +262,30 @@ client.on('message', async message => {
                     inline: true
                 },
                 {
-                    name: 'Ban',
-                    value: `Bans someone`,
-                    inline: true
+                    name: '+fun',
+                    value: 'Shows list of fun commands',
                 },
                 {
-                    name: 'kick',
-                    value: `kicks someone`,
-                    inline: true
+                    name: '+animals',
+                    value: 'Shows list of animal pic commands',
                 },
                 {
-                    name: 'slowmode',
-                    value: `Sets the slowmode`,
-                    inline: true
+                    name: '+gifs',
+                    value: 'Shows list of gif commands',
                 },
                 {
-                    name: 'clear',
-                    value: `clears messages`,
-                    inline: true
+                    name: '+moderation',
+                    value: 'Shows list of moderation commands',
                 },
                 {
-                    name: 'lock on',
-                    value: 'Locks all channels',
-                    inline: true
-                },
-                {
-                    name: 'lock off',
-                    value: 'Unlocks all channels',
-                    inline: true
-                },
-                {
-                    name: 'warn',
-                    value: 'Warns a user',
-                    inline: true
-                },
-                {
-                    name: 'nick',
-                    value: 'Changes a nickname for someone',
-                    inline: true
-                },
-                {
-                    name: 'gif-help',
-                    value: 'Shows all the gif commands',
-                    inline: true
-                },
-                {
-                    name: 'react-help',
-                    value: 'Shows all the react commmands',
-                    inline: true
-                },
-                {
-                    name: 'test',
-                    value: 'tests if the bot is working and sends back a message if it is',
-                    inline: true
-                },
-                {
-                    name: 'socials',
-                    value: 'shows all of my owners socials',
-                    inline: true
-                },
-                {
-                    name: 'support-server',
-                    value: 'gives you the link of my support and official server',
-                    inline: true
-                },
-                {
-                    name: 'bot-info',
-                    value: 'shows info about me',
-                    inline: true
-                },
-                {
-                    name: 'server-info',
-                    value: 'shows info about the server',
-                    inline: true
-                },
-                {
-                    name: 'user-info',
-                    value: 'shows info about the user',
-                    inline: true
-                },
-                {
-                    name: 'invite',
-                    value: 'sends my invite link if you want to invite me to your server :)',
-                    inline: true
-                },
-                {
-                    name: '8ball',
-                    value: 'sends something random for your question',
-                    inline: true
-                },
-                {
-                    name: 'kill',
-                    value: 'kills someone',
-                    inline: true
-                },
-                {
-                    name: 'rate',
-                    value: 'rates you or whoever you mention',
-                    inline: true
-                },
-                {
-                    name: 'meme',
-                    value: 'sends a meme',
-                    inline: true
-                },
-                {
-                    name: 'covid',
-                    value: 'shows all the covid stats',
-                    inline: true
-                },
-                {
-                    name: 'animal-help',
-                    value: 'shows all of the animal picture commands',
-                    inline: true
-                },
-                {
-                    name: 'weather-c',
-                    value: 'shows the weather for your city in Celsius **+weather {city/state}**',
-                    inline: true
-                },
-                {
-                    name: 'weather-f',
-                    value: 'shows the weather for your city in Fahrenheit **+weather {city/state}**',
-                    inline: true
-                },
-                {
-                    name: 'swagmeter',
-                    value: 'gives you a swag ranking',
-                    inline: true
-                },
-                {
-                    name: 'uptime',
-                    value: 'Gives you the uptime of Bender',
-                    inline: true
+                    name: '+info',
+                    value: 'Shows list of commands that give you info',
                 },
             )
             .setFooter(`Created By: ${message.author.tag}`, message.author.displayAvatarURL())
-        message.author.send(embed)
+        message.channel.send(embed)
     } else if (command == 'socials') {
         message.react('👍')
-        message.reply('check your dms')
         const embed = new Discord.MessageEmbed()
             .setThumbnail(client.user.displayAvatarURL())
             .setTitle('all of my owners socials')
@@ -418,246 +293,123 @@ client.on('message', async message => {
             .addFields(
                 {
                     name: 'twitter',
-                    value: `https://twitter.com/chrisbearryy`,
-                    inline: true
+                    value: `https://twitter.com/chrisboiclique`,
                 },
                 {
                     name: 'twitch',
-                    value: `https://twitch.tv/chrisbearry1`,
-                    inline: true
+                    value: `https://twitch.tv/chrisboiclique_`,
                 },
                 {
                     name: 'youtube',
                     value: `https://www.youtube.com/channel/UCEjkFrKf7W9MBQrStVa5z_A?view_as=subscriber`,
-                    inline: true
-                },
-                {
-                    name: 'instagram',
-                    value: `https://www.instagram.com/chrisbearryy/`,
-                    inline: true
                 },
                 {
                     name: 'tiktok',
-                    value: `https://www.tiktok.com/@chrisbearry?lang=en`,
-                    inline: true
+                    value: `https://www.tiktok.com/@morganbearry?lang=en`,
                 },
                 {
                     name: 'snapchat',
-                    value: `Catchley59`,
-                    inline: true
+                    value: `chrisboiclique1`,
                 },
                 {
-                    name: 'Discord username',
+                    name: 'Discord',
                     value: '<@735258386157010994>',
-                    inline: true
                 },
                 {
                     name: 'discord server',
-                    value: 'https://discord.gg/HxHnabv',
-                    inline: true
+                    value: 'https://discord.gg/RPfSKPuaMz',
                 },
             )
             .setFooter(`Created By: ${message.author.tag}`, message.author.displayAvatarURL())
-        message.author.send(embed)
+        message.channel.send(embed)
     } else if (command == 'support-server') {
         message.reply('https://discord.gg/MezfttD here is my support server and my official server')
-    } else if (command == 'react-help') {
+    } else if (command == 'gifs') {
         message.react('👍')
-        message.reply('Check your dms')
-        const embed = new Discord.MessageEmbed()
-            .setThumbnail(client.user.displayAvatarURL())
-            .setTitle('react commands')
-            .setColor('#000000')
-            .addFields(
-                {
-                    name: 'react-sad',
-                    value: `reacts with 😢`,
-                    inline: true
-                },
-                {
-                    name: 'react-thinking',
-                    value: `reacts with 🤔`,
-                    inline: true
-                },
-                {
-                    name: 'react-happy',
-                    value: `reacts with 😄`,
-                    inline: true
-                },
-                {
-                    name: 'react-mad',
-                    value: `reacts with 😡`,
-                    inline: true
-                },
-                {
-                    name: 'react-heart',
-                    value: 'reacts with ❤️',
-                    inline: true
-                },
-                {
-                    name: 'react-thumbsup',
-                    value: 'reacts with 👍',
-                    inline: true
-                },
-                {
-                    name: 'react-hot',
-                    value: 'reacts with 🥵',
-                    inline: true
-                },
-                {
-                    name: 'react-cold',
-                    value: 'reacts with 🥶',
-                    inline: true
-                },
-                {
-                    name: 'react-ok',
-                    value: 'reacts with 🆗',
-                    inline: true
-                },
-                {
-                    name: 'react-no',
-                    value: 'reacts with 🚫',
-                    inline: true
-                },
-                {
-                    name: 'react-fire',
-                    value: 'reacts with 🔥',
-                    inline: true
-                },
-            )
-            .setFooter(`Created By: ${message.author.tag}`, message.author.displayAvatarURL())
-        message.author.send(embed)
-    } else if (command == 'gif-help') {
-        message.react('👍')
-        message.reply('Check your dms')
         const embed = new Discord.MessageEmbed()
             .setThumbnail(client.user.displayAvatarURL())
             .setTitle('gif commands')
-            .setColor('#000000')
+            .setColor('RANDOM')
             .addFields(
                 {
                     name: 'stickbug',
                     value: `sends a stickbug gif`,
-                    inline: true
                 },
                 {
                     name: 'gfys',
                     value: `sends a gif that says go fuck yourself`,
-                    inline: true
                 },
                 {
                     name: 'stfu',
                     value: `sends a gif that says stfu`,
-                    inline: true
                 },
                 {
                     name: 'noc',
                     value: `sends a gif that says no one cares`,
-                    inline: true
                 },
                 {
                     name: 'no',
-                    value: 'sends a gif that says no',
-                    inline: true
-                },
-                {
-                    name: 'no2',
-                    value: 'sends another gif that says no',
-                    inline: true
-                },
-                {
-                    name: 'no3',
-                    value: 'sends another gif that says no',
-                    inline: true
+                    value: 'sends a random gif that says no',
                 },
                 {
                     name: 'gtfo',
                     value: 'sends a gif that says get the fuck out',
-                    inline: true
                 },
                 {
                     name: 'fucku',
                     value: 'sends a gif that says fuck you',
-                    inline: true
                 },
                 {
                     name: 'fuck',
                     value: 'sends a gif that says fuck',
-                    inline: true
                 },
                 {
                     name: 'idgaf',
-                    value: 'sends a gif that says I don\'t give a fuck',
-                    inline: true
-                },
-                {
-                    name: 'idgaf2',
-                    value: 'sends another gif that says I don\'t give a fuck',
-                    inline: true
+                    value: 'sends a random gif that says I don\'t give a fuck',
                 },
                 {
                     name: 'idk',
                     value: 'sends a gif that says I don\'t know',
-                    inline: true
                 },
                 {
                     name: 'ily',
-                    value: 'sends a gif that says I love you',
-                    inline: true
-                },
-                {
-                    name: 'ily2',
-                    value: 'sends another gif that says I love you',
-                    inline: true
-                },
-                {
-                    name: 'ilysm',
-                    value: 'sends a gif that says I love you so much',
-                    inline: true
+                    value: 'sends a random gif that says I love you',
                 },
                 {
                     name: 'wc',
-                    value: 'sends a gif that says who cares',
-                    inline: true
+                    value: 'sends a gif that says who cares'
                 },
                 {
                     name: 'damn-bro',
                     value: 'sends a gif that says damn bro thats crazy but did I ask ',
-                    inline: true
                 },
                 {
                     name: 'bruh',
                     value: 'sends a gif that says bruh',
-                    inline: true
                 },
                 {
                     name: 'who-asked',
-                    value: 'sends a gif that says who asked',
-                    inline: true
-                },
-                {
-                    name: 'who-asked2',
-                    value: 'sends a gif that says Me looking for who asked',
-                    inline: true
+                    value: 'sends a random gif that says who asked',
                 },
                 {
                     name: 'are-you-sure',
                     value: 'sends a gif that says are you sure about that',
-                    inline: true
                 },
                 {
                     name: 'damn',
                     value: 'sends a gif that says damn',
-                    inline: true
                 },
-
             )
             .setFooter(`Created By: ${message.author.tag}`, message.author.displayAvatarURL())
-        message.author.send(embed)
+        message.channel.send(embed)
     } else if (command == 'who-asked') {
-        message.channel.send('https://tenor.com/view/bean-dance-crazy-aye-dats-fr-crazy-hoe-now-show-me-one-person-who-asked-gif-16195074')
-    } else if (command == 'who-asked2') {
-        message.channel.send('https://tenor.com/view/me-looking-for-who-tf-asked-looking-around-kid-kazoo-kid-gif-17654948')
+        let number = Math.floor(Math.random() * 2);
+        if (number == 0) {
+            return message.channel.send('https://tenor.com/view/bean-dance-crazy-aye-dats-fr-crazy-hoe-now-show-me-one-person-who-asked-gif-16195074')
+        }
+        if (number == 1) {
+            return message.channel.send('https://tenor.com/view/me-looking-for-who-tf-asked-looking-around-kid-kazoo-kid-gif-17654948')
+        }
     } else if (command == 'server-info') {
         let region;
         switch (message.guild.region) {
@@ -832,25 +584,16 @@ client.on('message', async message => {
         }
 
     } else if (command == 'kill') {
-        let user = message.mentions.users.first();
+        let user = message.mentions.users.first() || message.author
         if (!user) {
             return message.channel.send('Please include who you are killing.')
         }
         return message.channel.send(message.author.username + ' Killed ' + user.username)
     } else if (command == 'rate') {
+        let user = message.mentions.users.first() || message.author
         let number = Math.floor(Math.random() * 101);
-        if (!args[1]) {
-            return message.channel.send('I would rate you a ' + number + '/100')
-        } else {
-            let user = message.mentions.users.first();
-            if (!user) {
-                return message.channel.send('Please include who you are rating.')
-            }
-            return message.channel.send('I would rate ' + user.username + ' a ' + number + '/100')
-
-        }
-
-    } else if (command == 'are-you-sure') {
+        message.channel.send(`I rate <@${user.id}> a ` + number + '/100')
+     } else if (command == 'are-you-sure') {
         message.channel.send('https://tenor.com/view/are-you-sure-john-cena-ru-sure-about-dat-gif-14258954')
     } else if (command == 'damn') {
         message.channel.send('https://tenor.com/view/damn-shookt-shocked-gif-5580082')
@@ -907,7 +650,7 @@ client.on('message', async message => {
         if (!message.member.hasPermission("MANAGE_MESSAGES")) {
             return message.reply('Hey... you cannot use this command.')
         }
-        const userWarn = message.mentions.members.first() || message.guild.members.cache.get(args[0])
+        const userWarn = message.mentions.members.first() || message.guild.members.cache.get(args[0]) 
         let warnTarget = message.guild.members.cache.get(userWarn.id)
         if (!userWarn) return message.channel.send("**Couldn't find that user**.")
         const reason = args.slice(1).join(" ");
@@ -977,47 +720,40 @@ client.on('message', async message => {
                 .setImage(x.body.link);
             message.channel.send(birdEmbed)
         })
-    } else if (command == 'animal-help') {
+    } else if (command == 'animals') {
         message.react('👍')
-        message.reply('check your dms')
         const embed = new Discord.MessageEmbed()
             .setThumbnail(client.user.displayAvatarURL())
             .setTitle('all animal picture commands')
-            .setColor('#000000')
+            .setColor('RANDOM')
             .addFields(
                 {
                     name: 'dog',
                     value: `sends a picture of a dog`,
-                    inline: true
                 },
                 {
                     name: 'cat',
                     value: `sends a picture of a cat`,
-                    inline: true
                 },
                 {
                     name: 'fox',
                     value: `sends a picture of a fox`,
-                    inline: true
                 },
                 {
                     name: 'koala',
                     value: `sends a picture of a koala`,
-                    inline: true
                 },
                 {
                     name: 'panda',
                     value: `sends a picture of a panda`,
-                    inline: true
                 },
                 {
                     name: 'bird',
                     value: `sends a picture of a bird`,
-                    inline: true
                 },
             )
             .setFooter(`Created By: ${message.author.tag}`, message.author.displayAvatarURL())
-        message.author.send(embed)
+        message.channel.send(embed)
     } else if (command == 'covid') {
         const covid = require('novelcovid')
         const covidStats = await covid.all();
@@ -1073,130 +809,264 @@ client.on('message', async message => {
 
             )
         message.channel.send(cvembed)
-    } else if (message.content.toLowerCase == 'dobu') {
-        message.channel.send('dobu is awesome')
-    } else if (command == 'weather-c') {
-        const weather = require("weather-js");
-        let city = args.join(" ");
-        let degreetype = "C"; // You can change it to F. (fahrenheit.)
-
-        await weather.find({ search: city, degreeType: degreetype }, function (err, result) {
-            if (!city) return message.channel.send("Please insert the city.");
-            if (err || result === undefined || result.length === 0) return message.channel.send("Unknown city. Please try again.");
-
-            let current = result[0].current;
-            let location = result[0].location;
-
-            const embed = new Discord.MessageEmbed()
-                .setAuthor(current.observationpoint)
-                .setDescription(`> ${current.skytext}`)
-                .setThumbnail(current.imageUrl)
-                .setTimestamp()
-                .setColor(0x7289DA)
-
-            embed.addField("Latitude", location.lat, true)
-                .addField("Longitude", location.long, true)
-                .addField("Feels Like", `${current.feelslike}° Degrees`, true)
-                .addField("Degree Type", location.degreetype, true)
-                .addField("Winds", current.winddisplay, true)
-                .addField("Humidity", `${current.humidity}%`, true)
-                .addField("Timezone", `GMT ${location.timezone}`, true)
-                .addField("Temperature", `${current.temperature}° Degrees`, true)
-                .addField("Observation Time", current.observationtime, true)
-
-            return message.channel.send(embed);
-        })
-    } else if (command == 'weather-f') {
-        const weather = require("weather-js");
-        let city = args.join(" ");
-        let degreetype = "F"; // You can change it to F. (fahrenheit.)
-
-        await weather.find({ search: city, degreeType: degreetype }, function (err, result) {
-            if (!city) return message.channel.send("Please insert the city.");
-            if (err || result === undefined || result.length === 0) return message.channel.send("Unknown city. Please try again.");
-
-            let current = result[0].current;
-            let location = result[0].location;
-
-            const embed = new Discord.MessageEmbed()
-                .setAuthor(current.observationpoint)
-                .setDescription(`> ${current.skytext}`)
-                .setThumbnail(current.imageUrl)
-                .setTimestamp()
-                .setColor(0x7289DA)
-
-            embed.addField("Latitude", location.lat, true)
-                .addField("Longitude", location.long, true)
-                .addField("Feels Like", `${current.feelslike}° Degrees`, true)
-                .addField("Degree Type", location.degreetype, true)
-                .addField("Winds", current.winddisplay, true)
-                .addField("Humidity", `${current.humidity}%`, true)
-                .addField("Timezone", `GMT ${location.timezone}`, true)
-                .addField("Temperature", `${current.temperature}° Degrees`, true)
-                .addField("Observation Time", current.observationtime, true)
-
-            return message.channel.send(embed);
-        })
     } else if (command == 'weather') {
-        message.reply('You have to type **+weather-c** or **+weather-f** weather-c is celsius and weather-f is fahrenheit')
-    } else if (command == 'nick') {
-        if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
-            return message.reply('You do not have permission to use this command!')
+        const weather = require("weather-js");
+        if (args[0] === 'f') {
+            let city = args.join(" ");
+            let degreetype = "F"; // You can change it to F. (fahrenheit.)
+    
+            await weather.find({ search: city, degreeType: degreetype }, function (err, result) {
+                if (!city) return message.channel.send("Please insert the city.");
+                if (err || result === undefined || result.length === 0) return message.channel.send("Unknown city. Please try again.");
+    
+                let current = result[0].current;
+                let location = result[0].location;
+    
+                const embed = new Discord.MessageEmbed()
+                    .setAuthor(current.observationpoint)
+                    .setDescription(`> ${current.skytext}`)
+                    .setThumbnail(current.imageUrl)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+    
+                embed.addField("Latitude", location.lat, true)
+                    .addField("Longitude", location.long, true)
+                    .addField("Feels Like", `${current.feelslike}° Degrees`, true)
+                    .addField("Degree Type", `Fahrenheit`, true)
+                    .addField("Winds", current.winddisplay, true)
+                    .addField("Humidity", `${current.humidity}%`, true)
+                    .addField("Timezone", `GMT ${location.timezone}`, true)
+                    .addField("Temperature", `${current.temperature}° Degrees`, true)
+                    .addField("Observation Time", current.observationtime, true)
+    
+                return message.channel.send(embed);
+            })
+        } else if (args[0] === 'c') {
+            let city = args.join(" ");
+            let degreetype = "C"; // You can change it to F. (fahrenheit.)
+
+            await weather.find({ search: city, degreeType: degreetype }, function (err, result) {
+                if (!city) return message.channel.send("Please insert the city.");
+                if (err || result === undefined || result.length === 0) return message.channel.send("Unknown city. Please try again.");
+    
+                let current = result[0].current;
+                let location = result[0].location;
+    
+                const embed = new Discord.MessageEmbed()
+                    .setAuthor(current.observationpoint)
+                    .setDescription(`> ${current.skytext}`)
+                    .setThumbnail(current.imageUrl)
+                    .setTimestamp()
+                    .setColor("RANDOM")
+    
+                embed.addField("Latitude", location.lat, true)
+                    .addField("Longitude", location.long, true)
+                    .addField("Feels Like", `${current.feelslike}° Degrees`, true)
+                    .addField("Degree Type", `Celsius`, true)
+                    .addField("Winds", current.winddisplay, true)
+                    .addField("Humidity", `${current.humidity}%`, true)
+                    .addField("Timezone", `GMT ${location.timezone}`, true)
+                    .addField("Temperature", `${current.temperature}° Degrees`, true)
+                    .addField("Observation Time", current.observationtime, true)
+    
+                return message.channel.send(embed);
+            })
         }
+    } else if(command == 'nick'){
+        if (!message.member.hasPermission("MANAGE_NICKNAMES")){
+            return message.reply('You do not have permission to use this command!')
+        } 
         const mentionedMember = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         const nickname = args.slice(1).join(" ");
-
-
-        if (!args[0]) {
-            return message.reply('You must state a member to change a nickname')
+        
+        if (!args[0]){
+          return message.reply('You must state a member to change a nickname')
+        } 
+        if (!mentionedMember){
+           return message.reply('that user is not in this server!')
         }
-        if (!mentionedMember) {
-            return message.reply('that user is not in this server!')
-        }
-        if (!nickname) {
+        if(!nickname){
             return message.reply('You must state a nickname for the member!')
-        } else
-            await mentionedMember.setNickname(nickname)
+        } else 
+        await mentionedMember.setNickname(nickname)
         message.reply(`Their nickname has been set to **${nickname}**`)
     } else if (command == 'swagmeter') {
+        let user = message.mentions.users.first() || message.author
         let number = Math.floor(Math.random() * 11);
         if (number == 0) {
-            return message.channel.send('Your Swag Rank: 0 :joy:\n\n:red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:')
+            return message.channel.send(`Swag rank for <@${user.id}> is 0 :joy:\n\n:red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:`)
         }
         if (number == 1) {
-            return message.channel.send('Your Swag Rank: 1\n\n:green_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:')
+            return message.channel.send(`Swag rank for <@${user.id}> is 1\n\n:green_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:`)
         }
         if (number == 2) {
-            return message.channel.send('Your Swag Rank: 2\n\n:green_square::green_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:')
+            return message.channel.send(`Swag rank for <@${user.id}> is 2\n\n:green_square::green_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:`)
         }
         if (number == 3) {
-            return message.channel.send('Your Swag Rank: 3\n\n:green_square::green_square::green_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:')
+            return message.channel.send(`Swag rank for <@${user.id}> is 3\n\n:green_square::green_square::green_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:`)
         }
         if (number == 4) {
-            return message.channel.send('Your Swag Rank: 4\n\n:green_square::green_square::green_square::green_square::red_square::red_square::red_square::red_square::red_square::red_square:')
+            return message.channel.send(`Swag rank for <@${user.id}> is 4\n\n:green_square::green_square::green_square::green_square::red_square::red_square::red_square::red_square::red_square::red_square:`)
         }
         if (number == 5) {
-            return message.channel.send('Your Swag Rank: 5\n\n:green_square::green_square::green_square::green_square::green_square::red_square::red_square::red_square::red_square::red_square:')
+            return message.channel.send(`Swag rank for <@${user.id}> is 5\n\n:green_square::green_square::green_square::green_square::green_square::red_square::red_square::red_square::red_square::red_square:`)
         }
         if (number == 6) {
-            return message.channel.send('Your Swag Rank: 6\n\n:green_square::green_square::green_square::green_square::green_square::green_square::red_square::red_square::red_square::red_square:')
+            return message.channel.send(`Swag rank for <@${user.id}> is 6\n\n:green_square::green_square::green_square::green_square::green_square::green_square::red_square::red_square::red_square::red_square:`)
         }
         if (number == 7) {
-            return message.channel.send('Your Swag Rank: 7\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::red_square::red_square::red_square:')
+            return message.channel.send(`Swag rank for <@${user.id}> is 7\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::red_square::red_square::red_square:`)
         }
         if (number == 8) {
-            return message.channel.send('Your Swag Rank: 8\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::red_square::red_square:')
+            return message.channel.send(`Swag rank for <@${user.id}> is 8\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::red_square::red_square:`)
         }
         if (number == 9) {
-            return message.channel.send('Your Swag Rank: 9\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::red_square:')
+            return message.channel.send(`Swag rank for <@${user.id}> is 9\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::red_square:`)
         }
         if (number == 10) {
-            return message.channel.send('Your Swag Rank: 10\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square:')
+            return message.channel.send(`Swag rank for <@${user.id}> is 10\n\n:green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square::green_square:`)
         }
-    } else if (command == 'uptime') {
+    } else if(command == 'uptime'){
         message.channel.send(`I have been online for ${process.uptime().toFixed(2)}s`)
-    } else if (command == 'anna') {
-        message.channel.send(`their personality is perfect and her voiceee her voice is literally so cute <33`)
+    } else if(command == 'anna'){
+        message.channel.send(`Her personality is perfect and her voiceee her voice is literally so cute. She's a 10/10 tbh <33`)
+    } else if(command == 'corey'){
+      message.channel.send('god damn his voice is hot and he cute asf')
+    } else if(command == 'favsongs'){
+      message.channel.send('https://www.youtube.com/watch?v=0VaeyqMK0GU').then(() => {
+      message.channel.send('https://www.youtube.com/watch?v=gOMhN-hfMtY')
+      }).then(() => {
+      message.channel.send('https://www.youtube.com/watch?v=NGFSNE18Ywc')
+      }).then(() => {
+      message.channel.send(`These are my owner and maintainers aka <@735258386157010994>'s 3 fav songs right now :)`)
+      })
+    } else if(command == 'annafavsongs'){
+      message.channel.send('https://www.youtube.com/watch?v=NGFSNE18Ywc').then(() => {
+      message.channel.send('https://www.youtube.com/watch?v=A63VwWz1ij0')
+      }).then(() => {
+      message.channel.send('https://www.youtube.com/watch?v=KdJHBYb8S4Y')
+      }).then(() => {
+      message.channel.send(`These are my Anna's fav songs right now :)`)
+      })
+    } else if(command == 'moderation'){
+        const embed = new Discord.MessageEmbed()
+            .setThumbnail(client.user.displayAvatarURL())
+            .setTitle('Moderation commands')
+            .setColor('RANDOM')
+            .addFields(
+                {
+                    name: '+ban',
+                    value: `Bans a user. Usage "+ban @user reason"`,
+                },
+                {
+                    name: '+kick',
+                    value: `Kicks a user. Usage "+kick @user reason"`,
+                },
+                {
+                    name: '+warn',
+                    value: `Warns a user. Usage "+warn @user reason"`,
+                },
+                {
+                    name: '+slowmode',
+                    value: `Sets a slowmode for a channel. Usage "+slowmode (seconds)"`,
+                },
+                {
+                    name: '+clear',
+                    value: `Deletes multiple messages. Usage "+clear (number of messages)"`,
+                },
+                {
+                    name: '+nick',
+                    value: `Sets a nickname for a user. Usage "+nick @user (nickname)"`,
+                },
+                {
+                    name: '+lock on',
+                    value: `Locks all channels.`,
+                },
+                {
+                    name: '+lock off',
+                    value: `Unlocks all channels.`,
+                },
+            )
+            .setFooter(`Created By: ${message.author.tag}`, message.author.displayAvatarURL())
+        message.channel.send(embed)
+    } else if(command == 'fun'){
+        const embed = new Discord.MessageEmbed()
+            .setThumbnail(client.user.displayAvatarURL())
+            .setTitle('Fun commands')
+            .setColor('RANDOM')
+            .addFields(
+                {
+                    name: '+8ball',
+                    value: `Sends answers a regular 8ball would give. Usage "+8ball (question)"`,
+                },
+                {
+                    name: '+kill',
+                    value: `Kills someone. Usage "+kill @user"`,
+                },
+                {
+                    name: '+rate',
+                    value: `Rates a you or another user. Usage "+rate" if you're rating yourself, "+rate @user" if rating someone else"`,
+                },
+                {
+                    name: '+meme',
+                    value: `Sends a meme.`,
+                },
+                {
+                    name: '+swagmeter',
+                    value: `Gives you or another user a swag rank. Usage "+swagmeter" if you want a ranking for yourself, "+swagmeter @user" for another user.`,
+                },
+                {
+                    name: '+favsongs',
+                    value: `Sends my owner/maintainers fav songs.`,
+                },
+                {
+                    name: '+annafavsongs',
+                    value: `Sends Anna's fav songs (One of my owner/maintainers close friends)`,
+                },
+            )
+            .setFooter(`Created By: ${message.author.tag}`, message.author.displayAvatarURL())
+        message.channel.send(embed)
+    } else if(command == 'info'){
+        const embed = new Discord.MessageEmbed()
+            .setThumbnail(client.user.displayAvatarURL())
+            .setTitle('Info commands')
+            .setColor('RANDOM')
+            .addFields(
+                {
+                    name: '+bot-info',
+                    value: `Gives you info about Bender.`,
+                },
+                {
+                    name: '+server-info',
+                    value: `Gives you info about a server.`,
+                },
+                {
+                    name: '+user-info',
+                    value: `Gives you info about a user. Usage "+user-info @user"`,
+                },
+                {
+                    name: '+covid',
+                    value: `Gives you worldwide info about covid.`,
+                },
+                {
+                    name: '+invite',
+                    value: `Sends Benders invite if you want to add it to your server. :)`,
+                },
+                {
+                    name: '+socials',
+                    value: `Sends the socials of my owner/maintainer.`,
+                },
+                {
+                    name: 'weather',
+                    value: `Gives you info about the weather. Usage for fahrenheit "+weather f (City/State/Region)" Usage for celsius "+weather c (City/State/Region)"`,
+                },
+                {
+                    name: '+uptime',
+                    value: `Gives you the uptime of Bender.`,
+                },
+            )
+            .setFooter(`Created By: ${message.author.tag}`, message.author.displayAvatarURL())
+        message.channel.send(embed)
     }
 });
 
