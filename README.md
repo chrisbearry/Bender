@@ -1,1 +1,1 @@
-This is my old bot that is no longer maintained or online new bot is coming soon. 
+This is the official repo for the Bender discord bot.
